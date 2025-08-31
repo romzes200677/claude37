@@ -1,0 +1,11 @@
+D:\Src\learn_csharp\ai_test_platform\src\Services\CodeExecution\CodeExecution.Infrastructure\bin\Debug\net9.0\CodeExecution.Infrastructure.deps.json
+D:\Src\learn_csharp\ai_test_platform\src\Services\CodeExecution\CodeExecution.Infrastructure\bin\Debug\net9.0\CodeExecution.Infrastructure.dll
+D:\Src\learn_csharp\ai_test_platform\src\Services\CodeExecution\CodeExecution.Infrastructure\bin\Debug\net9.0\CodeExecution.Infrastructure.pdb
+D:\Src\learn_csharp\ai_test_platform\src\Services\CodeExecution\CodeExecution.Infrastructure\obj\Debug\net9.0\CodeExecution.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Src\learn_csharp\ai_test_platform\src\Services\CodeExecution\CodeExecution.Infrastructure\obj\Debug\net9.0\CodeExecution.Infrastructure.AssemblyInfoInputs.cache
+D:\Src\learn_csharp\ai_test_platform\src\Services\CodeExecution\CodeExecution.Infrastructure\obj\Debug\net9.0\CodeExecution.Infrastructure.AssemblyInfo.cs
+D:\Src\learn_csharp\ai_test_platform\src\Services\CodeExecution\CodeExecution.Infrastructure\obj\Debug\net9.0\CodeExecution.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Src\learn_csharp\ai_test_platform\src\Services\CodeExecution\CodeExecution.Infrastructure\obj\Debug\net9.0\CodeExecution.Infrastructure.dll
+D:\Src\learn_csharp\ai_test_platform\src\Services\CodeExecution\CodeExecution.Infrastructure\obj\Debug\net9.0\refint\CodeExecution.Infrastructure.dll
+D:\Src\learn_csharp\ai_test_platform\src\Services\CodeExecution\CodeExecution.Infrastructure\obj\Debug\net9.0\CodeExecution.Infrastructure.pdb
+D:\Src\learn_csharp\ai_test_platform\src\Services\CodeExecution\CodeExecution.Infrastructure\obj\Debug\net9.0\ref\CodeExecution.Infrastructure.dll

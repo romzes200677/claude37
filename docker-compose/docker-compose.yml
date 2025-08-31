@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  # PostgreSQL для микросервисов
+  postgres:
+    image: postgres:latest
+    container_name: ai_test_platform_postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_MULTIPLE_DATABASES=identity_db,courses_db,testing_db,code_execution_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-multiple-databases.sh:/docker-entrypoint-initdb.d/init-multiple-databases.sh
+    networks:
+      - ai_test_platform_network
+    restart: unless-stopped
+
+  # Zookeeper для Kafka
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: ai_test_platform_zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    networks:
+      - ai_test_platform_network
+    restart: unless-stopped
+
+  # Kafka для обмена сообщениями между микросервисами
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: ai_test_platform_kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+      - ai_test_platform_network
+    restart: unless-stopped
+
+  # Kafka UI для управления топиками и мониторинга
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: ai_test_platform_kafka_ui
+    depends_on:
+      - kafka
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: ai_test_platform
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+    networks:
+      - ai_test_platform_network
+    restart: unless-stopped
+
+  # pgAdmin для управления базами данных
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: ai_test_platform_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - ai_test_platform_network
+    restart: unless-stopped
+
+networks:
+  ai_test_platform_network:
+    driver: bridge
+
+volumes:
+  postgres_data:

@@ -1,0 +1,4 @@
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Domain\obj\Debug\net9.0\Identity.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Domain\obj\Debug\net9.0\Identity.Domain.AssemblyInfoInputs.cache
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Domain\obj\Debug\net9.0\Identity.Domain.AssemblyInfo.cs
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Domain\obj\Debug\net9.0\Identity.Domain.csproj.CoreCompileInputs.cache

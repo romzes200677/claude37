@@ -1,0 +1,11 @@
+D:\Src\learn_csharp\ai_test_platform\src\Services\Courses\Courses.Domain\bin\Debug\net9.0\Courses.Domain.deps.json
+D:\Src\learn_csharp\ai_test_platform\src\Services\Courses\Courses.Domain\bin\Debug\net9.0\Courses.Domain.dll
+D:\Src\learn_csharp\ai_test_platform\src\Services\Courses\Courses.Domain\bin\Debug\net9.0\Courses.Domain.pdb
+D:\Src\learn_csharp\ai_test_platform\src\Services\Courses\Courses.Domain\obj\Debug\net9.0\Courses.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Src\learn_csharp\ai_test_platform\src\Services\Courses\Courses.Domain\obj\Debug\net9.0\Courses.Domain.AssemblyInfoInputs.cache
+D:\Src\learn_csharp\ai_test_platform\src\Services\Courses\Courses.Domain\obj\Debug\net9.0\Courses.Domain.AssemblyInfo.cs
+D:\Src\learn_csharp\ai_test_platform\src\Services\Courses\Courses.Domain\obj\Debug\net9.0\Courses.Domain.csproj.CoreCompileInputs.cache
+D:\Src\learn_csharp\ai_test_platform\src\Services\Courses\Courses.Domain\obj\Debug\net9.0\Courses.Domain.dll
+D:\Src\learn_csharp\ai_test_platform\src\Services\Courses\Courses.Domain\obj\Debug\net9.0\refint\Courses.Domain.dll
+D:\Src\learn_csharp\ai_test_platform\src\Services\Courses\Courses.Domain\obj\Debug\net9.0\Courses.Domain.pdb
+D:\Src\learn_csharp\ai_test_platform\src\Services\Courses\Courses.Domain\obj\Debug\net9.0\ref\Courses.Domain.dll

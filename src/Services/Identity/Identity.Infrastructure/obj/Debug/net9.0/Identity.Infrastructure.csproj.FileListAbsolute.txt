@@ -1,0 +1,11 @@
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Infrastructure\bin\Debug\net9.0\Identity.Infrastructure.deps.json
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Infrastructure\bin\Debug\net9.0\Identity.Infrastructure.dll
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Infrastructure\bin\Debug\net9.0\Identity.Infrastructure.pdb
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Infrastructure\obj\Debug\net9.0\Identity.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Infrastructure\obj\Debug\net9.0\Identity.Infrastructure.AssemblyInfoInputs.cache
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Infrastructure\obj\Debug\net9.0\Identity.Infrastructure.AssemblyInfo.cs
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Infrastructure\obj\Debug\net9.0\Identity.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Infrastructure\obj\Debug\net9.0\Identity.Infrastructure.dll
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Infrastructure\obj\Debug\net9.0\refint\Identity.Infrastructure.dll
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Infrastructure\obj\Debug\net9.0\Identity.Infrastructure.pdb
+D:\Src\learn_csharp\ai_test_platform\src\Services\Identity\Identity.Infrastructure\obj\Debug\net9.0\ref\Identity.Infrastructure.dll

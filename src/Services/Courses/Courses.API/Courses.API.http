@@ -1,0 +1,49 @@
+@Courses.API_HostAddress = http://localhost:5141
+
+### Тестовый запрос
+GET {{Courses.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+### Получить персонализированные рекомендации
+GET {{Courses.API_HostAddress}}/api/recommendations/personalized/00000000-0000-0000-0000-000000000001?limit=5
+Accept: application/json
+
+### Получить рекомендации на основе истории просмотров
+GET {{Courses.API_HostAddress}}/api/recommendations/view-history/00000000-0000-0000-0000-000000000001?limit=5
+Accept: application/json
+
+### Получить рекомендации на основе завершенных курсов
+GET {{Courses.API_HostAddress}}/api/recommendations/completed-courses/00000000-0000-0000-0000-000000000001?limit=5
+Accept: application/json
+
+### Получить рекомендации на основе интересов
+GET {{Courses.API_HostAddress}}/api/recommendations/interests/00000000-0000-0000-0000-000000000001?limit=5
+Accept: application/json
+
+### Получить похожие курсы
+GET {{Courses.API_HostAddress}}/api/recommendations/similar/00000000-0000-0000-0000-000000000001?limit=5
+Accept: application/json
+
+### Получить популярные курсы
+GET {{Courses.API_HostAddress}}/api/recommendations/popular?limit=5&days=30
+Accept: application/json
+
+### Получить новые курсы
+GET {{Courses.API_HostAddress}}/api/recommendations/new?limit=5&days=30
+Accept: application/json
+
+### Отслеживание просмотра курса
+POST {{Courses.API_HostAddress}}/api/recommendations/track-view/00000000-0000-0000-0000-000000000001/00000000-0000-0000-0000-000000000002
+Accept: application/json
+
+### Обновление интересов пользователя
+POST {{Courses.API_HostAddress}}/api/recommendations/update-interests/00000000-0000-0000-0000-000000000001
+Content-Type: application/json
+
+[
+  "programming",
+  "web development",
+  "machine learning"
+]
+
+###

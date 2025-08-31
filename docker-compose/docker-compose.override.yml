@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  # Настройки для Identity.API
+  identity.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=postgres;Port=5432;Database=identity_db;User Id=postgres;Password=postgres;
+      - EventBusSettings__HostName=kafka
+      - EventBusSettings__Port=29092
+    ports:
+      - "5001:80"
+    depends_on:
+      - postgres
+      - kafka
+
+  # Настройки для Courses.API
+  courses.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=postgres;Port=5432;Database=courses_db;User Id=postgres;Password=postgres;
+      - EventBusSettings__HostName=kafka
+      - EventBusSettings__Port=29092
+    ports:
+      - "5002:80"
+    depends_on:
+      - postgres
+      - kafka
+
+  # Настройки для Testing.API
+  testing.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=postgres;Port=5432;Database=testing_db;User Id=postgres;Password=postgres;
+      - EventBusSettings__HostName=kafka
+      - EventBusSettings__Port=29092
+    ports:
+      - "5003:80"
+    depends_on:
+      - postgres
+      - kafka
+
+  # Настройки для CodeExecution.API
+  codeexecution.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=postgres;Port=5432;Database=code_execution_db;User Id=postgres;Password=postgres;
+      - EventBusSettings__HostName=kafka
+      - EventBusSettings__Port=29092
+    ports:
+      - "5004:80"
+    depends_on:
+      - postgres
+      - kafka
+
+  # Настройки для Frontend.Web
+  frontend.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - Services__Identity=http://identity.api
+      - Services__Courses=http://courses.api
+      - Services__Testing=http://testing.api
+      - Services__CodeExecution=http://codeexecution.api
+    ports:
+      - "5000:80"
+    depends_on:
+      - identity.api
+      - courses.api
+      - testing.api
+      - codeexecution.api

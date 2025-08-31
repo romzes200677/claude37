@@ -1,0 +1,5 @@
+D:\Src\learn_csharp\ai_test_platform\src\BuildingBlocks\Common\Common\obj\Debug\net9.0\Common.csproj.AssemblyReference.cache
+D:\Src\learn_csharp\ai_test_platform\src\BuildingBlocks\Common\Common\obj\Debug\net9.0\Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\Src\learn_csharp\ai_test_platform\src\BuildingBlocks\Common\Common\obj\Debug\net9.0\Common.AssemblyInfoInputs.cache
+D:\Src\learn_csharp\ai_test_platform\src\BuildingBlocks\Common\Common\obj\Debug\net9.0\Common.AssemblyInfo.cs
+D:\Src\learn_csharp\ai_test_platform\src\BuildingBlocks\Common\Common\obj\Debug\net9.0\Common.csproj.CoreCompileInputs.cache

@@ -1,0 +1,15 @@
+d:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\obj\Debug\net9.0\Testing.Application.csproj.AssemblyReference.cache
+d:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\obj\Debug\net9.0\Testing.Application.GeneratedMSBuildEditorConfig.editorconfig
+d:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\obj\Debug\net9.0\Testing.Application.AssemblyInfoInputs.cache
+d:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\obj\Debug\net9.0\Testing.Application.AssemblyInfo.cs
+d:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\obj\Debug\net9.0\Testing.Application.csproj.CoreCompileInputs.cache
+D:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\bin\Debug\net9.0\Testing.Application.deps.json
+D:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\bin\Debug\net9.0\Testing.Application.dll
+D:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\bin\Debug\net9.0\Testing.Application.pdb
+D:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\bin\Debug\net9.0\Testing.Domain.dll
+D:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\bin\Debug\net9.0\Testing.Domain.pdb
+D:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\obj\Debug\net9.0\Testing..3115EE60.Up2Date
+D:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\obj\Debug\net9.0\Testing.Application.dll
+D:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\obj\Debug\net9.0\refint\Testing.Application.dll
+D:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\obj\Debug\net9.0\Testing.Application.pdb
+D:\Src\learn_csharp\ai_test_platform\src\Services\Testing\Testing.Application\obj\Debug\net9.0\ref\Testing.Application.dll

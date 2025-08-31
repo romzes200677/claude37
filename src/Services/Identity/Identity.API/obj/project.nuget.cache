@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "gG+02OfntMI=",
+  "success": true,
+  "projectFilePath": "d:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Identity\\Identity.API\\Identity.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.7\\microsoft.aspnetcore.openapi.9.0.7.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
