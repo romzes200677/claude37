@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8tPE/wwgHZM=",
+  "dgSpecHash": "UucKjNKT+hQ=",
   "success": true,
-  "projectFilePath": "d:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Courses\\Courses.API\\Courses.API.csproj",
+  "projectFilePath": "D:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Courses\\Courses.API\\Courses.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

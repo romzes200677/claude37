@@ -17,6 +17,7 @@ namespace Testing.Application
             services.AddScoped<ITestQuestionOptionResponseService, TestQuestionOptionResponseService>();
             services.AddScoped<ITestCategoryService, TestCategoryService>();
             services.AddScoped<ITestTagService, TestTagService>();
+            services.AddScoped<ITestEvaluationService, TestEvaluationService>();
 
             return services;
         }

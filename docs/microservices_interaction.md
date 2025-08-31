@@ -67,6 +67,7 @@ sequenceDiagram
     participant Courses as Courses Service
     participant Testing as Testing Service
     participant CodeExec as CodeExecution Service
+    participant AiService as AI Service
     participant EventBus as Event Bus
     
     Client->>Gateway: POST /api/tests/{testId}/attempts
@@ -86,15 +87,20 @@ sequenceDiagram
         Testing->>CodeExec: Выполнение кода
         CodeExec->>CodeExec: Запуск в изолированной среде
         CodeExec-->>Testing: Результаты выполнения
+        Testing->>AiService: Оценка кода с помощью ИИ
+        AiService-->>Testing: Результаты оценки кода
+    else Вопрос с текстовым ответом
+        Testing->>AiService: Оценка текстового ответа с помощью ИИ
+        AiService-->>Testing: Результаты оценки текста
     end
     
-    Testing->>Testing: Сохранение ответа в БД
+    Testing->>Testing: Сохранение ответа и оценки в БД
     Testing-->>Gateway: Ответ сохранен
     Gateway-->>Client: 200 OK
     
     Client->>Gateway: POST /api/tests/attempts/{attemptId}/submit
     Gateway->>Testing: Завершение попытки
-    Testing->>Testing: Оценка результатов
+    Testing->>Testing: Финализация результатов
     Testing->>EventBus: Публикация TestCompletedEvent
     Testing-->>Gateway: Результаты теста
     Gateway-->>Client: 200 OK, TestResultsDto
@@ -221,9 +227,20 @@ classDiagram
         +bool IsPassed
     }
     
+    class TestQuestionResponseEvaluatedEvent {
+        +Guid ResponseId
+        +Guid QuestionId
+        +Guid StudentId
+        +DateTime EvaluatedAt
+        +int Score
+        +bool IsCorrect
+        +bool IsAiEvaluated
+    }
+    
     IntegrationEvent <|-- TestCreatedEvent
     IntegrationEvent <|-- TestAttemptStartedEvent
     IntegrationEvent <|-- TestCompletedEvent
+    IntegrationEvent <|-- TestQuestionResponseEvaluatedEvent
 ```
 
 ### События микросервиса CodeExecution
@@ -624,6 +641,52 @@ public class EventBusKafka : IEventBus
 
 5. **Четкое разделение ответственности** - каждый микросервис отвечает за конкретную бизнес-функцию.
 
+## Интеграция с ИИ сервисом для оценки тестов
+
+В микросервисе Testing реализована интеграция с внешним ИИ сервисом для автоматической оценки ответов на вопросы с текстовым ответом и вопросы с кодом.
+
+### Архитектура интеграции с ИИ
+
+```mermaid
+flowchart LR
+    TestQuestionResponseService["TestQuestionResponseService"] --> TestEvaluationService["TestEvaluationService"]
+    TestEvaluationService --> AiService["AiService"]
+    AiService --> ExternalAiApi["Внешний ИИ API (OpenAI)"]    
+```
+
+### Последовательность оценки ответа с помощью ИИ
+
+```mermaid
+sequenceDiagram
+    participant TQRService as TestQuestionResponseService
+    participant TEService as TestEvaluationService
+    participant AiService as AiService
+    participant ExternalAI as Внешний ИИ API
+    participant DB as База данных
+    
+    TQRService->>TEService: EvaluateTextAnswerAsync / EvaluateCodeAnswerAsync
+    TEService->>AiService: EvaluateTextAnswerAsync / EvaluateCodeAnswerAsync
+    AiService->>ExternalAI: HTTP запрос с ответом и эталонным ответом
+    ExternalAI-->>AiService: Результат оценки (JSON)
+    AiService-->>TEService: AiEvaluationResult
+    TEService->>TEService: Расчет баллов на основе оценки ИИ
+    TEService-->>TQRService: Обновленный TestQuestionResponse
+    TQRService->>DB: Сохранение результатов оценки
+```
+
+### Конфигурация ИИ сервиса
+
+Конфигурация для подключения к внешнему ИИ API хранится в appsettings.json:
+
+```json
+{
+  "AiService": {
+    "ApiKey": "your-api-key-here",
+    "ApiEndpoint": "https://api.openai.com/v1/chat/completions"
+  }
+}
+```
+
 ## Проблемы и решения
 
 1. **Согласованность данных** - использование шаблона Event Sourcing и CQRS для обеспечения согласованности данных между микросервисами.
@@ -635,3 +698,5 @@ public class EventBusKafka : IEventBus
 4. **Аутентификация и авторизация** - использование JWT-токенов и централизованного сервиса Identity для управления доступом.
 
 5. **Сетевые задержки** - оптимизация взаимодействия между микросервисами и использование кэширования.
+
+6. **Оценка ответов на открытые вопросы** - использование ИИ для автоматической оценки текстовых ответов и кода.

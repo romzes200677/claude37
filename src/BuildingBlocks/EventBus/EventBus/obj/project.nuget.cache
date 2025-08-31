@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EVJgo0FHxdQ=",
+  "dgSpecHash": "cZZAKpTQ4+w=",
   "success": true,
-  "projectFilePath": "d:\\Src\\learn_csharp\\ai_test_platform\\src\\BuildingBlocks\\EventBus\\EventBus\\EventBus.csproj",
+  "projectFilePath": "D:\\Src\\learn_csharp\\ai_test_platform\\src\\BuildingBlocks\\EventBus\\EventBus\\EventBus.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\confluent.kafka\\2.3.0\\confluent.kafka.2.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\librdkafka.redist\\2.3.0\\librdkafka.redist.2.3.0.nupkg.sha512",

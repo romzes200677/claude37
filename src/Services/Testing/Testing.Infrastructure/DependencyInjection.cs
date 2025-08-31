@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Testing.Application.Services;
 using Testing.Domain.Repositories;
 using Testing.Infrastructure.Data;
 using Testing.Infrastructure.Repositories;
+using Testing.Infrastructure.Services;
 
 namespace Testing.Infrastructure
 {
@@ -30,6 +32,10 @@ namespace Testing.Infrastructure
 
             // Register database initializer
             services.AddScoped<TestingDbInitializer>();
+            
+            // Register services
+            services.AddHttpClient();
+            services.AddScoped<IAiService, AiService>();
 
             return services;
         }

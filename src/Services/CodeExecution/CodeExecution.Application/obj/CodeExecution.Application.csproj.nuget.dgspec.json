@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\CodeExecution\\CodeExecution.Application\\CodeExecution.Application.csproj": {}
+    "D:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\CodeExecution\\CodeExecution.Application\\CodeExecution.Application.csproj": {}
   },
   "projects": {
-    "d:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\CodeExecution\\CodeExecution.Application\\CodeExecution.Application.csproj": {
+    "D:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\CodeExecution\\CodeExecution.Application\\CodeExecution.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\CodeExecution\\CodeExecution.Application\\CodeExecution.Application.csproj",
+        "projectUniqueName": "D:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\CodeExecution\\CodeExecution.Application\\CodeExecution.Application.csproj",
         "projectName": "CodeExecution.Application",
-        "projectPath": "d:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\CodeExecution\\CodeExecution.Application\\CodeExecution.Application.csproj",
+        "projectPath": "D:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\CodeExecution\\CodeExecution.Application\\CodeExecution.Application.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "d:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\CodeExecution\\CodeExecution.Application\\obj\\",
+        "outputPath": "D:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\CodeExecution\\CodeExecution.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

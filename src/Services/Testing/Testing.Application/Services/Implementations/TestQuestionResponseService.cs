@@ -16,15 +16,19 @@ namespace Testing.Application.Services.Implementations
         private readonly ITestQuestionOptionRepository _testQuestionOptionRepository;
         private readonly ILogger<TestQuestionResponseService> _logger;
 
+        private readonly ITestEvaluationService _testEvaluationService;
+
         public TestQuestionResponseService(
             ITestQuestionResponseRepository testQuestionResponseRepository,
             ITestQuestionRepository testQuestionRepository,
             ITestQuestionOptionRepository testQuestionOptionRepository,
+            ITestEvaluationService testEvaluationService,
             ILogger<TestQuestionResponseService> logger)
         {
             _testQuestionResponseRepository = testQuestionResponseRepository;
             _testQuestionRepository = testQuestionRepository;
             _testQuestionOptionRepository = testQuestionOptionRepository;
+            _testEvaluationService = testEvaluationService;
             _logger = logger;
         }
 
@@ -237,8 +241,24 @@ namespace Testing.Application.Services.Implementations
                     throw new KeyNotFoundException($"Test question response with ID {responseId} not found");
                 }
 
-                await EvaluateResponseInternalAsync(response);
-                return await _testQuestionResponseRepository.UpdateAsync(response);
+                var question = await _testQuestionRepository.GetByIdAsync(response.QuestionId);
+                if (question == null)
+                {
+                    throw new KeyNotFoundException($"Test question with ID {response.QuestionId} not found");
+                }
+
+                // Для текстовых и кодовых вопросов используем сервис ИИ-оценки
+                if (question.QuestionType == Domain.Enums.QuestionType.Text || 
+                    question.QuestionType == Domain.Enums.QuestionType.Code)
+                {
+                    return await _testEvaluationService.EvaluateResponseAsync(responseId);
+                }
+                else
+                {
+                    // Для вопросов с выбором вариантов используем стандартную оценку
+                    await EvaluateResponseInternalAsync(response);
+                    return await _testQuestionResponseRepository.UpdateAsync(response);
+                }
             }
             catch (Exception ex)
             {
@@ -278,16 +298,13 @@ namespace Testing.Application.Services.Implementations
                                         correctOptionIds.All(id => selectedOptionIds.Contains(id));
                     break;
 
-                // TrueFalse тип отсутствует в перечислении QuestionType
-                // Удаляем дублирующий case
-
                 case Domain.Enums.QuestionType.Text:
                 case Domain.Enums.QuestionType.Code:
-                    // For text-based answers, we'll need manual review
-                    response.IsCorrect = null; // Requires manual grading
+                    // Для текстовых и кодовых вопросов теперь используется TestEvaluationService
+                    // Этот код выполнится только если метод вызван напрямую, а не через EvaluateResponseAsync
+                    _logger.LogWarning($"Question type {question.QuestionType} should be evaluated using TestEvaluationService");
+                    response.IsCorrect = null; // Требуется оценка ИИ или ручная проверка
                     break;
-
-                // Тип Matching отсутствует в перечислении QuestionType, поэтому удаляем этот case
 
                 default:
                     response.IsCorrect = false;
@@ -302,7 +319,6 @@ namespace Testing.Application.Services.Implementations
             else
             {
                 // For automatically graded questions, set points earned based on correctness
-                // IsCorrect здесь не null, но может быть bool или bool?
                 response.PointsEarned = response.IsCorrect == true ? question.Points : 0;
             }
         }

@@ -212,7 +212,10 @@ erDiagram
 | responseText | string | Текст ответа (для текстовых вопросов) |
 | pointsEarned | int | Заработанные баллы |
 | isCorrect | boolean | Правильный ли ответ |
-| aiEvaluation | string | Оценка ИИ (для текстовых ответов) |
+| aiEvaluation | json | Результат оценки ИИ (для текстовых и кодовых ответов) |
+| aiEvaluationScore | decimal | Оценка ИИ в процентах (0-100) |
+| aiEvaluationFeedback | string | Обратная связь от ИИ |
+| isAiEvaluated | boolean | Был ли ответ оценен с помощью ИИ |
 | reviewerFeedback | string | Обратная связь от проверяющего |
 | createdAt | datetime | Дата создания |
 | updatedAt | datetime | Дата обновления |

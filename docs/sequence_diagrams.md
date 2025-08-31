@@ -12,6 +12,7 @@
 6. [Получение сертификата](#получение-сертификата)
 7. [Обработка уведомлений](#обработка-уведомлений)
 8. [Интеграция с внешними системами](#интеграция-с-внешними-системами)
+9. [Оценка ответов на тесты с использованием AI](#оценка-ответов-на-тесты-с-использованием-ai)
 
 ## Регистрация и аутентификация пользователя
 
@@ -188,6 +189,7 @@ sequenceDiagram
     participant Identity as Сервис Identity
     participant Courses as Сервис Courses
     participant Testing as Сервис Testing
+    participant AI as Сервис AI
     participant CoursesDB as База данных Courses
     participant TestingDB as База данных Testing
     participant EventBus as Event Bus
@@ -225,6 +227,15 @@ sequenceDiagram
             Gateway->>Testing: Перенаправление ответа
             Testing->>TestingDB: Сохранение ответа
             TestingDB-->>Testing: Подтверждение сохранения
+            
+            alt Вопрос с открытым ответом или код
+                Testing->>AI: Запрос на оценку ответа
+                AI-->>Testing: Результат оценки (оценка, обратная связь)
+                Testing->>TestingDB: Сохранение результатов AI-оценки
+                TestingDB-->>Testing: Подтверждение сохранения
+                Testing->>EventBus: Публикация события TestQuestionResponseEvaluatedEvent
+            end
+            
             Testing-->>Gateway: Результат сохранения
             Gateway-->>Student: Обновление интерфейса
         end
@@ -464,8 +475,8 @@ sequenceDiagram
     %% Интеграция с ИИ-сервисами
     CodeExec->>AI: Запросы на анализ кода
     AI-->>CodeExec: Результаты анализа и рекомендации
-    Testing->>AI: Запросы на генерацию тестов
-    AI-->>Testing: Сгенерированные тесты
+    Testing->>AI: Запросы на оценку ответов и генерацию тестов
+    AI-->>Testing: Результаты оценки и сгенерированные тесты
     
     %% Интеграция с облачным хранилищем
     Courses->>Storage: Загрузка материалов курсов
@@ -483,6 +494,51 @@ sequenceDiagram
     EventBus->>Courses: События для обработки
     EventBus->>Testing: События для обработки
     EventBus->>CodeExec: События для обработки
+```
+
+## Оценка ответов на тесты с использованием AI
+
+```mermaid
+sequenceDiagram
+    actor Student as Студент
+    participant Gateway as API Gateway
+    participant Testing as Сервис Testing
+    participant TestQuestionResponseService as Сервис ответов на вопросы
+    participant TestEvaluationService as Сервис оценки тестов
+    participant AiService as AI сервис
+    participant TestingDB as База данных Testing
+    participant EventBus as Event Bus
+    
+    Student->>Gateway: Отправка ответа на вопрос теста
+    Gateway->>Testing: Перенаправление ответа
+    Testing->>TestQuestionResponseService: Сохранение ответа
+    TestQuestionResponseService->>TestingDB: Запись ответа в базу данных
+    TestingDB-->>TestQuestionResponseService: Подтверждение сохранения
+    
+    alt Вопрос с открытым ответом или код
+        TestQuestionResponseService->>TestEvaluationService: Запрос на оценку ответа
+        TestEvaluationService->>AiService: Отправка ответа и эталонного решения
+        
+        alt Ответ в виде кода
+            AiService->>AiService: Анализ кода, проверка логики и эффективности
+        else Текстовый ответ
+            AiService->>AiService: Семантический анализ текста, сравнение с эталоном
+        end
+        
+        AiService-->>TestEvaluationService: Результаты оценки (оценка, обратная связь)
+        TestEvaluationService-->>TestQuestionResponseService: Возврат результатов оценки
+        TestQuestionResponseService->>TestingDB: Сохранение результатов AI-оценки
+        TestingDB-->>TestQuestionResponseService: Подтверждение сохранения
+        TestQuestionResponseService->>EventBus: Публикация события TestQuestionResponseEvaluatedEvent
+    else Вопрос с выбором варианта
+        TestQuestionResponseService->>TestEvaluationService: Запрос на проверку ответа
+        TestEvaluationService->>TestEvaluationService: Автоматическая проверка по ключу
+        TestEvaluationService-->>TestQuestionResponseService: Результат проверки
+    end
+    
+    TestQuestionResponseService-->>Testing: Результат обработки ответа
+    Testing-->>Gateway: Результат сохранения и оценки
+    Gateway-->>Student: Обновление интерфейса (при необходимости с обратной связью)
 ```
 
 ## Заключение

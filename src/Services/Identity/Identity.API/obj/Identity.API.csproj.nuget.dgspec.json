@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Identity\\Identity.API\\Identity.API.csproj": {}
+    "D:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Identity\\Identity.API\\Identity.API.csproj": {}
   },
   "projects": {
-    "d:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Identity\\Identity.API\\Identity.API.csproj": {
+    "D:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Identity\\Identity.API\\Identity.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Identity\\Identity.API\\Identity.API.csproj",
+        "projectUniqueName": "D:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Identity\\Identity.API\\Identity.API.csproj",
         "projectName": "Identity.API",
-        "projectPath": "d:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Identity\\Identity.API\\Identity.API.csproj",
+        "projectPath": "D:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Identity\\Identity.API\\Identity.API.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "d:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Identity\\Identity.API\\obj\\",
+        "outputPath": "D:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Identity\\Identity.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -279,18 +279,22 @@ C4Component
         Component(test_question_service, "TestQuestionService", "C#", "Сервис управления вопросами тестов")
         Component(test_attempt_service, "TestAttemptService", "C#", "Сервис управления попытками прохождения тестов")
         Component(test_category_service, "TestCategoryService", "C#", "Сервис управления категориями тестов")
-        Component(test_evaluation_service, "TestEvaluationService", "C#", "Сервис оценки результатов тестов")
+        Component(test_evaluation_service, "TestEvaluationService", "C#", "Сервис оценки результатов тестов с использованием ИИ")
+        Component(test_question_response_service, "TestQuestionResponseService", "C#", "Сервис управления ответами на вопросы")
+        Component(ai_service, "AiService", "C#", "Сервис интеграции с внешним ИИ API")
         
         Component(test_template_repository, "TestTemplateRepository", "EF Core", "Репозиторий шаблонов тестов")
         Component(test_question_repository, "TestQuestionRepository", "EF Core", "Репозиторий вопросов тестов")
         Component(test_attempt_repository, "TestAttemptRepository", "EF Core", "Репозиторий попыток прохождения тестов")
         Component(test_category_repository, "TestCategoryRepository", "EF Core", "Репозиторий категорий тестов")
+        Component(test_question_response_repository, "TestQuestionResponseRepository", "EF Core", "Репозиторий ответов на вопросы")
         
         Component(testing_context, "TestingDbContext", "EF Core", "Контекст базы данных")
         
         Component(test_created_event, "TestCreatedEvent", "C#", "Событие создания теста")
         Component(test_published_event, "TestPublishedEvent", "C#", "Событие публикации теста")
         Component(test_completed_event, "TestCompletedEvent", "C#", "Событие завершения теста")
+        Component(test_question_response_evaluated_event, "TestQuestionResponseEvaluatedEvent", "C#", "Событие оценки ответа на вопрос с помощью ИИ")
         
         Component(course_published_handler, "CoursePublishedEventHandler", "C#", "Обработчик события публикации курса")
         Component(enrollment_created_handler, "EnrollmentCreatedEventHandler", "C#", "Обработчик события создания зачисления")
@@ -311,16 +315,21 @@ C4Component
     Rel(test_question_service, test_question_repository, "Использует")
     Rel(test_attempt_service, test_attempt_repository, "Использует")
     Rel(test_category_service, test_category_repository, "Использует")
-    Rel(test_attempt_service, test_evaluation_service, "Использует")
+    Rel(test_attempt_service, test_question_response_service, "Использует")
+    Rel(test_question_response_service, test_question_response_repository, "Использует")
+    Rel(test_question_response_service, test_evaluation_service, "Использует")
+    Rel(test_evaluation_service, ai_service, "Использует")
     
     Rel(test_template_service, test_created_event, "Создает")
     Rel(test_template_service, test_published_event, "Создает")
     Rel(test_attempt_service, test_completed_event, "Создает")
+    Rel(test_evaluation_service, test_question_response_evaluated_event, "Создает")
     
     Rel(test_template_repository, testing_context, "Использует")
     Rel(test_question_repository, testing_context, "Использует")
     Rel(test_attempt_repository, testing_context, "Использует")
     Rel(test_category_repository, testing_context, "Использует")
+    Rel(test_question_response_repository, testing_context, "Использует")
     
     Rel(testing_context, testing_db, "Читает/Пишет", "TCP")
     
@@ -329,6 +338,7 @@ C4Component
     Rel(test_created_event, event_bus, "Публикуется в")
     Rel(test_published_event, event_bus, "Публикуется в")
     Rel(test_completed_event, event_bus, "Публикуется в")
+    Rel(test_question_response_evaluated_event, event_bus, "Публикуется в")
     
     Rel(event_bus, course_published_handler, "Доставляет события")
     Rel(event_bus, enrollment_created_handler, "Доставляет события")

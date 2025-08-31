@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9rxftKd8CI4=",
+  "dgSpecHash": "Vmbe8VmRhsw=",
   "success": true,
-  "projectFilePath": "d:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Testing\\Testing.Infrastructure\\Testing.Infrastructure.csproj",
+  "projectFilePath": "D:\\Src\\learn_csharp\\ai_test_platform\\src\\Services\\Testing\\Testing.Infrastructure\\Testing.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
